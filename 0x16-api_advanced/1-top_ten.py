@@ -1,24 +1,23 @@
 #!/usr/bin/python3
-""" retrieve titles for posts from reddit api """
+"""A function that queries the Reddit API and
+prints the titles of the first 10 hot posts
+listed for a given subreddit."""
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None):
-    """return list of all host posts titles of a subreddit """
-
-    headers = {'User-agent': 'my agent'}
-    url = "https://www.reddit.com/r/{}/hot.json?limit=70&after={}".format(
-	   subreddit, after)
-    posts = requests.get(url, headers=headers, allow_redirects=False)
-
-    if posts.status_code == 200:
-        posts = posts.json()['data']
-        after = posts['after']
-        posts = posts['children']
-        for posts in posts:
-	    hot-list.append(post['data']['title'])
-	if after is not None:
-	    recurse(subreddit, hot_list, after)
-	return (hot_list)
-    else:
-	return (None)
+def top_ten(subreddit):
+    """prints the titles of the first 10 hot posts listed"""
+    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
+    headers = {
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+    }
+    params = {
+        "limit": 10
+    }
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
+    if response.status_code == 404:
+        print("None")
+        return
+    results = response.json().get("data")
+    [print(c.get("data").get("title")) for c in results.get("children")]

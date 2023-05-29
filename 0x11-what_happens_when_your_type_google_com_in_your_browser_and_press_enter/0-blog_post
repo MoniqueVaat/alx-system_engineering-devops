@@ -1,0 +1,37 @@
+
+
+What happens when you type https://www.google.com in your browser and press enter? | by Monica Vaatyough | May, 2023 | Medium
+
+
+
+
+
+
+
+
+
+
+What happens when you type https://www.google.com in your browser and press enter?
+
+   Within few seconds before any result is displayed on your browser a lot happens in the background that many people don’t know about. I will be explaining everything in this article.
+   When https://www.google.com is entered in a browser your computer takes the URL and sends a request to the DNS server, The DNS server sends back the IP address of the server which https://www.google.com points to. With the IP address your computer establishes a connection with the server. If your computer is behind a firewall it checks if the request you’re making is allowed before permitting it, same thing happens if the server you want to access is behind a firewall. When connection has been established your browser sends a request for the webpage using encryption protocol like SSL or TLS. Google has high traffic so to regulate the traffic they have servers and load balancer is used to reduce the load on a server by allocating request sent, to a specific server. The server that receives the request sends a response back to the load balancer which forwards the response to the browser. 
+If there’s need for dynamic content such as Google search results the webserver will make a request to the application server which may make a request to a database server to get some data and send it back to the webserver.
+In a bid to make this explanation as brief as possible a lot of technical terms were used so I will explain in short notes the technical terms used in the explanation
+
+1.	URL : Uniform Resource Locator(URL) are unique address that help people locate webpages example of a URL https://www.google.com 
+
+2.	DNS: Domain name system, A DNS query or request is a demand for information from a user’s computer (DNS client) to a DNS server. The DNS request is sent to ask for the IP address associated with a domain name, your domain name is included in your URL.
+
+3.	TCP/IP : Transmission Control Protocol / Internet Protocol is a suite of communication protocols used to interconnect network devices on the internet 
+
+4.	Firewall: A firewall is a security system that monitors incoming and outgoing traffic based on predetermined security rule. Its primary purpose is to protect is to protect a network from external threats such as hackers and malware.
+
+5.	HTTPS/SSL: Hypertext Transfer Protocol Secure (HTTPS) is a secure version of the HTTP used to transmit data on the internet. It is used to encrypt the data transmitted between your browser and Google’s server.
+Secure Sockets Layer (SSL) is an encryption protocol used to secure the data transmitted over HTTPS.
+
+6.	Load-balancer:  A load balancer is a device that distributes network traffic evenly across a group of servers or resources to avoid overloading.
+
+7.	Web server: webserver is a program that is responsible for handling requests for web pages from clients.
+
+8.	Application server and database: The application server handles dynamic content depending on the complexity of the search query. The application server may need to make a request to a database in order to retrieve the necessary data.
+
